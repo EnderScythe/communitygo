@@ -1,5 +1,6 @@
 // Import axios library for making HTTP requests
 const axios = require('axios');
+const returnCoordList = require('./backend_fiptrial2_part2');
 
 function findSmallBusinesses(apiKey, location, radius, businessType) {
     const endpointUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";

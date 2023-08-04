@@ -1,6 +1,10 @@
+const find_counties_on_edge = require('./backend_county_finder');
+
+
+
 const fs = require('fs');
 
-const file_path = "C:\\Users\\16145\\Downloads\\git_tripped_file.csv";
+const file_path = "C:\Users\Jeffrey Xie\Documents\GitHub\communitygo\FIPS and counties.csv";
 
 function find_first_high_poverty_county(file_path, county) {
   if (is_high_poverty(file_path, county)) {
@@ -9,7 +13,7 @@ function find_first_high_poverty_county(file_path, county) {
   return null;
 }
 
-const county_fip_list = ["13169", "13027", "13141"];
+const county_fip_list = find_counties_on_edge();
 
 function is_high_poverty(file_path, county_name) {
   if (fs.existsSync(file_path)) {
@@ -51,8 +55,12 @@ function getCoordListForFip(fip, filePath) {
   return null;
 }
 
-const coord_list = getCoordListForFip(first_high_poverty_county, new_file_path);
 
+
+function returnCoordList() {
+  const coord_list = getCoordListForFip(first_high_poverty_county, new_file_path);
+  return coord_list;
+}
 if (coord_list) {
   const county_coords = {
     latitude: coord_list[0],
@@ -63,3 +71,5 @@ if (coord_list) {
 } else {
   console.log("County coordinates not found.");
 }
+
+module.exports = returnCoordList;

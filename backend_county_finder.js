@@ -123,3 +123,5 @@ async function main() {
 }
 
 main();
+
+module.exports = find_counties_on_edge;
